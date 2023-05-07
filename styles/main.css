@@ -46,6 +46,13 @@ main{
 
 .details-section{
   margin: auto;
+  transition: 5s;
+  
+}
+
+.point{
+    transform: scale(0.001);
+    transition: s; 
 }
 
 .details-image{
@@ -67,6 +74,7 @@ main{
     position: absolute;
     left: 2vw;
     bottom: 2vh;
+    padding: 5px;
 }
 
 .thumbnails-list{
@@ -76,9 +84,10 @@ main{
     overflow-y: auto;
     max-height: 60vh;
     padding: 0 20px;
-    display: flex;
     justify-content: space-between;
 }
+
+
 
 .thumbnails-item{
     border: solid 1px black;
@@ -93,7 +102,8 @@ main{
 
 .thumbnails-item:hover{
     border-color: rgb(9, 53, 13);
-    transform: scale(1.2);
+    transform: scale(1.1);
+    /* transition:0.7s; */
 }
 
 
@@ -120,13 +130,29 @@ main{
 
 
 
+.hidden .details-section{
+    display: none;
+}
+
+.hidden{
+    
+}
+
+
+
+
+.hide-button{
+    font-size: 0.8em;
+    position: absolute;
+    top: 3vh;
+    right: 3vw;
+    border: solid 1px black ;
+    border-radius: 50%;
+    background-color: rgba(82, 74, 74, 0.4);
+    cursor: pointer;
+}
+
 @media (min-width: 650px) {
-    header{
-        /* z-index: 1;
-        position: sticky;
-        top: 0;
-        left: 0; */
-    }
 
     body{
         overflow: hidden;
@@ -135,23 +161,18 @@ main{
 
 
     main{
-        /* display:  flex; */
-        /* align-items: top; */
         justify-content: start;
         flex-direction: row-reverse;
     }
 
+
     .details-image{
         width: 45vw;
         height: 35vw;
-        /* margin: auto; */
     }
 
     .details-section{
         margin: auto;
-        
-        /* display: flex; */
-        /* align-self: top; */
     }
     
     .thumbnails-list{
@@ -162,11 +183,24 @@ main{
         flex-wrap: nowrap;
     }
 
+    .hidden .thumbnails-list {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0 20px 0 0;
+    }
+
     .thumbnails-item{
         margin-bottom: 20px;
         margin-top: 0px;
     }
 
+    .hide-button{
+        top: 5vh;
+    right: 5vw;
+    }
    
 
 }
