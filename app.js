@@ -1,88 +1,64 @@
-console.log("Hello world");
+let ar = [];
+ar[10] = 100;
+ar[0] = 'hello';
+ar[3] = [];
+ar.length = 0;
+[] && console.log(true);
+//add at array end
+ar[ar.length] = 10
+ar.push(0)
 
-let b = 5;
-b = "String";
-b = false;
-b = 5;
-console.log(b instanceof Object);
-console.log(3 + (4 + "1"));
+//method "map"
 
-console.log(("A" + +"A" + "AS").toLowerCase());
+console.log([1, 2, 3].map(n => n ** 3));
 
-function myToStringInt(number, radix) {
-    //number - any number
-    //radix - camputation base if radix < 2 or radix > 36 then radix = 10
-    //removes fraction part, 34.25 => 34
-    const sign = number < 0 ? "-" : "";
-    let res = "";
-    number = Math.abs(number);
-    if (radix < 2 || radix > 36) {
-        radix = 10;
+function getRandomIntNumber(min, max, minInclusive = true, maxInclusive = false) {
+    if (!minInclusive) {
+        min++;
     }
-    number = Math.round(number);
-    do {
-        res = getSymbol(number, radix) + res;
-        number = Math.trunc(number / radix);
-    } while (number != 0)
-
-    return sign + res;
-}
-
-function getSymbol(number, radix) {
-    const aCode = 'a'.charCodeAt(0);
-    const delta = aCode - 10;
-    let x = number % radix;
-    return x < 10 ? x : String.fromCharCode(x + delta);
-}
-const num = 5454378;
-console.log("Using myToString function: " + myToStringInt(num, 36))
-console.log("Default toString function: " + num.toString(36));
-console.log(myToStringInt(5454378, 36) == num.toString(36));
-
-const strNum = '0';
-let radix;
-console.log(`string with number ${strNum} for radix ${radix} is ${parseInt(strNum, radix)}`);
-
-function myParseInt(strNum, radix) {
-    strNum = strNum.trim();
-    let index = strNum.charAt(0) == '-' ? 1 : 0 || strNum.charAt(0) == '+' ? 1 :0;
-    
-    if((!radix || radix == 16) || getHexdecemalIndex(strNum.substring(index) > 0)){
-       index += 2;
-       radix = 16;
+    if (maxInclusive) {
+        max++;
     }
-
-    if(!radix ){
-        radix = 10;
-    }
-    let res = radix > 1 && radix < 37 ? getDigitCode(strNum, index, radix) : NaN;
-    if (!isNaN(res)) {
-        let digit;
-        index++;
-        while (index < strNum.length && !isNaN(digit = getDigitCode(strNum, index, radix))) {
-            res = res * radix + digit;
-            index++;
-        }
-        if(strNum[0] == '-'){
-            res = -res;
-        }
-
-    }
-    return res;
+    return min < max ? Math.floor(Math.random() * (max - min) + min) : undefined;
 }
 
-function getHexdecemalIndex(str){
-    return str.toLowerCase(startsWith('0x')) ? 2 : 0;
+function getArrayRandomIntNumbers(nNumbers, min, max, minInclusive = true, maxInclusive = false) {
+    let ar = [];
+    ar.length = nNumbers;
+    return min <= max ? ([...ar].map(() => getRandomIntNumber(min, max, minInclusive, maxInclusive)))
+        : undefined;
 }
 
-function getDigitCode(strNum, index, radix){
-    const delta = 'a'.charCodeAt(0) - 10;
-    const symbol = strNum.charAt(index);
-    const code = symbol >= '0' && symbol <= '9' ? +symbol : symbol.charCodeAt(0) - delta;
-    return code >= 0 && code < radix ? code : NaN;
+console.log(getArrayRandomIntNumbers(10, 3, 3, true));
+
+function getOrderedList(array) {
+    //return HTML string of element <ol> with items form
+    //a given array elements
+    //example: input- [1.2.3]
+    //output "<ol><li>1</li><li>2</li><li>3</li></ol>"
+    // array.map( n => res += '<li>' + n + '</li>');
+    return `<ol style = "text-align: center; list-style: none">${getListItems(array)}</ol>`;
 }
 
-console.log(`string with number ${strNum} for radix ${radix} is ${myParseInt(strNum, radix)}`);
+function getListItems(array) {
+    return array.map(v => `<li style = "font-size: 50px"> ${v} </li>`).join(" ")
+}
+
+function getBlackOrWhiteDiv(array) {
+    return array.map(v => `<div class = ${v == 0 ? 'white' : 'black'}> </div>`).join(' ');
+}
+
+// bodyId.innerHTML = getBlackOrWhiteDiv(getArrayRandomIntNumbers(10, 0, 2));
+console.log(getOrderedList([1, 2, 3, 4, 5, 6]))
 
 
+function getMatrixRandomIntNumbers(rows, columns, min, max){
+    //TODO matrix of random
+    let res = [];
+    res.length = rows;
+    return [...res].map(x => getArrayRandomIntNumbers(columns, min, max))
+
+}
+
+console.log(getMatrixRandomIntNumbers(5,4, 2,5));
 

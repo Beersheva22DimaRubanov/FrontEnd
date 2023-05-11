@@ -1,141 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='styles/main.css'>
-    <link rel="shortcut icon" href="images/icon.jpg" type="image/x-icon">
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     
-    <title>Dogram </title>
 </head>
-
-<body>
-    <header>
-        <h3 class="logo">DOGRAM</h3>
-    </header>
-    <main class="hidden">
-        <section class="details-section">
-            <div class="details-container">
-                <img src="images/dog1.jpeg" alt="dog1" class="details-image">
-                <span class="details-title">XXXXXXXXXXXXXXXX</span>
-                <button onclick="hideDetails()" class="hide-button">X</button>
-            </div>
-        </section>
-        <section class="thumbnails-section">
-            <ul class="thumbnails-list">
-                <li class="thumbnails-item">
-                    <a href = "#" class="thumbnails-anchor" data-details-image="images/dog1.jpeg"
-                        data-details-text = "dog1" >
-                        <img src="images/dog1.jpeg"  class="thumbnails-image" alt="">
-                        <span class="thumbnails-title">dog1</span>
-                    </a>
-                </li>
-                <li class="thumbnails-item">
-                    <a href="#" class="thumbnails-anchor" data-details-image="images/dog2.jpeg"
-                    data-details-text = "dog2">
-                        <img src="images/dog2.jpeg"  class="thumbnails-image" alt="">
-                        <span class="thumbnails-title">dog2</span>
-                    </a>
-                </li>
-                <li class="thumbnails-item">
-                    <a href="#" class="thumbnails-anchor" data-details-image="images/dog3.jpeg"
-                    data-details-text = "dog3">
-                        <img src="images/dog3.jpeg"  class="thumbnails-image" alt="">
-                        <span class="thumbnails-title">dog3</span>
-                    </a>
-                </li>
-                <li class="thumbnails-item"> 
-                    <a href="#" class="thumbnails-anchor" data-details-image="images/dog4.jpeg"
-                    data-details-text = "dog4">
-                        <img src="images/dog4.jpeg"  class="thumbnails-image" alt="">
-                        <span class="thumbnails-title">dog4</span>
-                    </a>
-                </li>
-                <li class="thumbnails-item">
-                    <a href="#" class="thumbnails-anchor" data-details-image="images/dog5.jpeg"
-                    data-details-text = "dog5">
-                        <img src="images/dog5.jpeg"  class="thumbnails-image" alt="">
-                        <span class="thumbnails-title">dog5</span>
-                    </a>
-                </li>
-                <li class="thumbnails-item">
-                    <a href = "#" class="thumbnails-anchor" data-details-image="images/dog1.jpeg"
-                        data-details-text = "dog1" >
-                        <img src="images/dog1.jpeg"  class="thumbnails-image" alt="">
-                        <span class="thumbnails-title">dog1</span>
-                    </a>
-                </li>
-                <li class="thumbnails-item">
-                    <a href="#" class="thumbnails-anchor" data-details-image="images/dog2.jpeg"
-                    data-details-text = "dog2">
-                        <img src="images/dog2.jpeg"  class="thumbnails-image" alt="">
-                        <span class="thumbnails-title">dog2</span>
-                    </a>
-                </li>
-                <li class="thumbnails-item">
-                    <a href="#" class="thumbnails-anchor" data-details-image="images/dog3.jpeg"
-                    data-details-text = "dog3">
-                        <img src="images/dog3.jpeg"  class="thumbnails-image" alt="">
-                        <span class="thumbnails-title">dog3</span>
-                    </a>
-                </li>
-                <li class="thumbnails-item"> 
-                    <a href="#" class="thumbnails-anchor" data-details-image="images/dog4.jpeg"
-                    data-details-text = "dog4">
-                        <img src="images/dog4.jpeg"  class="thumbnails-image" alt="">
-                        <span class="thumbnails-title">dog4</span>
-                    </a>
-                </li>
-                <li class="thumbnails-item">
-                    <a href="#" class="thumbnails-anchor" data-details-image="images/dog5.jpeg"
-                    data-details-text = "dog5">
-                        <img src="images/dog5.jpeg"  class="thumbnails-image" alt="">
-                        <span class="thumbnails-title">dog5</span>
-                    </a>
-                </li>
-                <li class="thumbnails-item">
-                    <a href = "#" class="thumbnails-anchor" data-details-image="images/dog1.jpeg"
-                        data-details-text = "dog1" >
-                        <img src="images/dog1.jpeg"  class="thumbnails-image" alt="">
-                        <span class="thumbnails-title">dog1</span>
-                    </a>
-                </li>
-                <li class="thumbnails-item">
-                    <a href="#" class="thumbnails-anchor" data-details-image="images/dog2.jpeg"
-                    data-details-text = "dog2">
-                        <img src="images/dog2.jpeg"  class="thumbnails-image" alt="">
-                        <span class="thumbnails-title">dog2</span>
-                    </a>
-                </li>
-                <li class="thumbnails-item">
-                    <a href="#" class="thumbnails-anchor" data-details-image="images/dog3.jpeg"
-                    data-details-text = "dog3">
-                        <img src="images/dog3.jpeg"  class="thumbnails-image" alt="">
-                        <span class="thumbnails-title">dog3</span>
-                    </a>
-                </li>
-                <li class="thumbnails-item"> 
-                    <a href="#" class="thumbnails-anchor" data-details-image="images/dog4.jpeg"
-                    data-details-text = "dog4">
-                        <img src="images/dog4.jpeg"  class="thumbnails-image" alt="">
-                        <span class="thumbnails-title">dog4</span>
-                    </a>
-                </li>
-                <li class="thumbnails-item">
-                    <a href="#" class="thumbnails-anchor" data-details-image="images/dog5.jpeg"
-                    data-details-text = "dog5">
-                        <img src="images/dog5.jpeg"  class="thumbnails-image" alt="">
-                        <span class="thumbnails-title">dog5</span>
-                    </a>
-                </li>
-               
-            </ul>
-        </section>
-    </main>
-
-    <script src="src/main.js"></script>
+<body id = "bodyId">
+    <script src='app.js'></script>
 </body>
-
 </html>
