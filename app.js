@@ -52,7 +52,7 @@ function getBlackOrWhiteDiv(array) {
 console.log(getOrderedList([1, 2, 3, 4, 5, 6]))
 
 
-function getMatrixRandomIntNumbers(rows, columns, min, max){
+function getMatrixRandomIntNumbers(rows, columns, min, max) {
     //TODO matrix of random
     let res = [];
     res.length = rows;
@@ -60,5 +60,61 @@ function getMatrixRandomIntNumbers(rows, columns, min, max){
 
 }
 
-console.log(getMatrixRandomIntNumbers(5,4, 2,5));
+console.log(getMatrixRandomIntNumbers(5, 4, 2, 5));
 
+//splice method for updating array
+// const ars = [10, 20, -70, 100, 6, -10, 0];
+// const arI = [1, 2, 3];
+// let index = ars.indexOf(-70);
+// ars.splice(index + 1, 0, ...arI);
+// console.log(ars)
+// console.log(ars.slice(index+1, index+4));
+// console.log(ars);
+// let indexFirstNegative = ars.findIndex(v => v < 0);
+// console.log(index == indexFirstNegative);
+
+function arrayCopy(src, posSrc, dst, posDst, length) {
+    let res = undefined;
+    if (Array.isArray(src) && Array.isArray(dst)) {
+        dst.splice(posDst, 0, ...src.slice(posSrc, posSrc + length));
+        res = dst;
+    }
+    return res;
+}
+
+function mooveElement(array, index, shift) {
+    let newIndex = index + shift;
+    if (newIndex >= array.length) {
+        newIndex = array.length - 1;
+    } else if (newIndex < 0) {
+        newIndex = 0;
+    }
+    array.splice(newIndex, 0, array.splice(index, 1))
+    return array;
+}
+
+const ars = [10, 20, -70, 100, 6, -10, 0];
+const arI = [1, 2, 3];
+
+console.log(arrayCopy(ars, 0, arI, 1, 2))
+console.log(ars);
+console.log("moove element: " + mooveElement(ars, 2, 8))
+
+//reduce
+console.log([1, 2, 3].reduce((res, cur) => res = res < cur ? res : cur));
+
+
+console.log(ars.reduce((res, cur) => {
+    if (cur < res[0]) {
+        res[0] = cur;
+    }
+    if (cur > res[1]) {
+        res[1] = cur;
+    }
+    return res;
+}, [ars[0], ars[0]]));
+
+//sort
+
+const ar10 = [2, 3, 123, 200, 99, -5];
+console.log(ar10.sort((a,b) => b-a))
