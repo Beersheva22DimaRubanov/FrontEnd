@@ -12,26 +12,28 @@
 
 <body id="bodyId">
     <section class="description-section">
-        <h2 class='description-title'>TRY TO FIND A WORD</h2>
-        <div class="game-description">You have 6 tries to find out o word. There are thrre main colors
-            <span style="color: red;">red</span> - wrong leetter, <span style="color: green;">green</span> - wright
-            letter on a wright place, <span style="color: rgb(255, 217, 0);">yellow</span> - wright letter on a wrong place
+        <h2 class='description-title'>Try to answer a question</h2>
+        <div class="game-description" id="question">
+            
         </div>
     </section>
     <section class="input-group">
-        <input type="text" id="input-id" placeholder="Enter your word 5 letters" , maxlength="5">
-        <button id="go-id">GO</button>
+        <div class="input-button">
+            <input type="number" id="input-number" placeholder="What letter you want to open?">
+            <button id="letter-button">Open letter</button>
+        </div>
+       <div class="input-button">
+            <input type="text" id="input-id" placeholder="Your answer" >
+        <button id="go-id">Open word</button>
+       </div>
+        <button id="ready-button">Ready answer?</button>
+
     </section>
-    <section class="square-group">
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
+    <section class="square-group" id="square-group">
     </section>
 
     <p id="game-result"></p>
-    <button id="play-again-id">Play again</button>
+    <button id="play-again-id">New game</button>
     <script src='src/game.js'></script>
 </body>
 
