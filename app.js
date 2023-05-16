@@ -48,11 +48,11 @@ function displayOccurrences(array) {
     // display strings with their occurrency counts in the descending order of the counts
     // if counts are equaled then in ascending string values order
 
-    const occurrences = array.reduce((obj, s) => ({...obj, [s]: obj[s] ? obj[s] +1:1}), {})
-    Object.entries(occurrences).sort((e1, e2) => e1[1] == e2[1]? e1[0].localeCompare(e2[0]): e2[1] - e1[1])
-    .forEach(e => console.log(`${e[0]} -> ${e[1]}`))
+    const occurrences = array.reduce((obj, s) => ({ ...obj, [s]: obj[s] ? obj[s] + 1 : 1 }), {})
+    Object.entries(occurrences).sort((e1, e2) => e1[1] == e2[1] ? e1[0].localeCompare(e2[0]) : e2[1] - e1[1])
+        .forEach(e => console.log(`${e[0]} -> ${e[1]}`))
     console.log(occurrences)
-    
+
 }
 
 function createStr(str, strLength) {
@@ -71,9 +71,9 @@ displayOccurrences(['lmn', 'ab', 'lmn', 'c', 'd', 'ab', 'a', 'a', 'lmn']);
 // }
 
 
-function isAnagram(word, anagram){
+function isAnagram(word, anagram) {
     let res = false;
-    if(word.length === anagram.length){
+    if (word.length === anagram.length) {
         word = word.toLowerCase();
         const occurrences = getOccurrences(Array.from(word));
         res = Array.from(anagram).every(s => occurrences[s]-- > 0);
@@ -82,7 +82,30 @@ function isAnagram(word, anagram){
 }
 
 
+//будет 200 так как если в квадратных  скобках то ссылается на одно и тоже поле т.к. js по 
+//умолчанию будет возверащать Object (toString)
+//{a: 10, b: 20, '[objectObject]': 100 -> 200}
+const a = { a: 'a', toString: function() {return 'a'} };
+const b = { b: 'b', toString: function(){return 'kuku'} };
+const d = { a: 10, b: 20 };
+d[a] = 100;
+d[b] = 200;
 
-console.log(isAnagram('TOga', 'goat'));
-console.log(isAnagram('thing', 'night'));
-console.log(isAnagram('toga', 'goals'));
+console.log(d);
+console.log(d[a]);
+
+const f = function(){};
+const num = 2;
+f.x = function(a,b){
+    return a +b;
+}
+console.log(f.x(10, 20));
+
+const ar = [2];
+ar.x = 10;
+console.log(ar.x);
+console.log(Array.from({length: 2}));
+console.log(Array.from({length: 5}).map((_, index) => index + 5));
+console.log(Array.from({length: 26})
+.map((_, index) => String.fromCharCode(index + 'a'.charCodeAt(0)))
+.map((s) => `<div>${s}</div>`).join(''));
