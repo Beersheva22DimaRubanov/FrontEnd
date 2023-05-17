@@ -18,12 +18,16 @@ const x = {f1: function(){
 console.log('x.f1 call result ', x.f1());
 console.log('x.f2 call ', x.f2);
 
-const rectangle = {width: 20, height: 20, square: function(){
+const rectangle1 = {width: 20, height: 20, square: function(){
     return this.width * this.height;
 }, perimeter: ()=> 2* (this.width + this.height)};
 
-console.log('square = ' + rectangle.square());
-console.log('perimeter = ' + rectangle.perimeter());
+const rectangle2 = {width: 20, height: 20, square: function(){
+    return this.width * this.height;
+}, perimeter: ()=> 2* (this.width + this.height)};
+
+console.log('square = ' + rectangle1.square());
+console.log('perimeter = ' + rectangle1.perimeter());
 
 const point ={x: 3, y: 4};
 function displayPoint(z, t){
