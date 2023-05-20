@@ -24,9 +24,11 @@ body{
 
 
 header{
+    padding: 20px 0;
+    margin-bottom: 30px;
     text-align: center;
-    background-color: #95cadc;
-    
+    background-color: #0e4557;
+    color: #d8dbdb;
 }
 
 .logo{
