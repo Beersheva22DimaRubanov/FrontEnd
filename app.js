@@ -34,6 +34,19 @@ function displayPoint(z, t){
     console.log(`x = ${this.x}, y = ${this.y}, z = ${z}, t =${t}`)
 }
 
-const displayPoint1 = displayPoint.bind(point, 100, 200);
+displayPoint.bind(point, 100, 200)();
 displayPoint.call(point, 200, 300);
 displayPoint.apply(point, [300,400]);
+
+
+Function.prototype.myBind = function(context, ...bindeArgs){
+    return(...args) => {
+        context.boundFunc = this;
+        const res = context.boundFunc(...bindeArgs, ...args);
+        delete context.bindeArgs;
+        return res;
+    }
+
+}
+
+const mydisplayPoint1 = displayPoint.myBind(point, 100, 200)();
