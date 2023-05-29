@@ -1,66 +1,44 @@
-//what's wrong - setTimeout(событие начнеться выполняться только после функции
-// а значит никогда не начнеться так как while)
-
-function sleep(timeout) {
-    return new Promise(resolve => setTimeout(() => resolve(), timeout))
-}
-
-function f1() {
-    console.log('f1 performed')
-}
-
-function f2() {
-    console.log('f2 performed')
-}
-
-function f3() {
-    console.log('f3 performed')
-}
-
-const promise = sleep(200);
-promise.then(() => f1()).then(() => f2()).then(() => f3())
-
-function getId(predicate) {
-    const ids = [123, 124, 125, 126];
-    const index = ids.findIndex(predicate);
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            return index < 0 ? reject('id not found') : resolve(ids[index])
-        }, 1000);
-    })
-}
-
-function getCar(id) {
-    const cars = {
-        '123': 'suzuki',
-        '124': 'hunday',
-        '125': 'honda'
-    }
-    const car = cars[id];
-    return new Promise((resolve, reject) => setTimeout(() => car ? resolve(car) : reject('no car found'), 1000))
-}
-
-// function displayCar(predicate){
-//     return(getId(predicate))
-//     .then(id => getCar(id))
-//     .then(car => console.log(car))
-//     .catch(err => console.log(err))
+// async function getTemperatures(lat, long){
+//     const response = 
+//     await fetch(`https://api.open-meteo.com/v1/gfs?latitude=${lat}&longitude=${long}&hourly=temperature_2m,apparent_temperature&timezone=IST`);
+//     return response.json();
 // }
 
-//new syntax:
+// getTemperatures(31.89, 34.81).then((data) => console.log(data)).catch((error) => console.log(error));
 
-async function displayCar(predicate) {
-    try {
-        const id = await getId(predicate);
-        const car = await getCar(id);
-        console.log(car);
+async function getTemperatures(lat, long, startDate, days, hourFrom, hourTo) {
+    // parameters: lat - latitude, long - longitude, startDate - ISO date of forecast, days - forecast days, 
+    // hourFrom - hourTo - range og the hours for each day 
+    // returns: 
+    // array of objects {date: <string containing date YYYY-MM-DD with no time>, time: <hour number from the given range>, 
+    // temperature: <number>}
+    const endDate = getEndDate(startDate, days);
+    const response = await fetch(getUrl(lat, long, startDate, endDate));
+    const data = await response.json();
+    const times = getDataForHours(data.hourly.time, hourFrom, hourTo);
+    const temperatures = getDataForHours(data.hourly.temperature_2m, hourFrom, hourTo);
 
-    } catch (error) {
-        console.log(error);
-    }
-
+    return times.map((d, index) => {
+        const token = d.split('T');
+        const date = token[0];
+        const time = token[1];
+        return {date, time, temperature: temperatures[index]}}
+        );
 }
 
-displayCar(id => id == 126).then(() => console.log('thanks & good bye'));
-console.log('waiting for the data ...')
+function getEndDate(startDateStr, days){
+    const start = new Date(startDateStr);
+   return new Date(start.setDate(start.getDate() + days)).toISOString().substring(0, 10);
+}
 
+function getUrl(lat, long, startDate, endDate){
+    return `https://api.open-meteo.com/v1/gfs?latitude=${lat}&longitude=${long}&hourly=temperature_2m&start_date=${startDate}&end_date=${endDate}`;
+}
+
+function getDataForHours(array, hourFrom, hourTo){
+    return array.filter((_, index) => {
+        const rem = index % 24;
+        return rem >= hourFrom && rem <=hourTo
+    })
+}
+console.log(getTemperatures(31.89, 34.81, "2023-05-16", 7, 10, 15).then(x => console.log(x)));
