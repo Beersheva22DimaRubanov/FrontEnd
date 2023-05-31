@@ -9,7 +9,7 @@ export default class EmployeeForm{
     }
 
     #fillSection(){
-        this.#parentElement.innerHTML = `<button id ='button-id'> Add random employee data </button>`;
+        this.#parentElement.innerHTML = `<button id ='button-id' class = 'add-button'> Add random employee data </button>`;
     }
 
     buttonHasPressed(){

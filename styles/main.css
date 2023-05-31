@@ -3,9 +3,96 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-start;
+  margin: 30px 0 50px 0;
+}
+
+/* #statistics-place, #employees-table-place{
+  text-align: center;
+} */
+
+#employees-table-place{
+  max-height: 73vh;
+  overflow: auto;
+  width: fit-content;
+  margin: auto;
+}
+
+.menu-section, .add-button{
+  padding: 10px 15px;
+  background-color: #F5AC77;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: larger;
 }
 
 .active{
   color: white;
-  background-color: blue;
+  background-color: #0569B5;
+}
+
+.statistics{
+  margin: 20px 0;
+}
+
+table{
+  width: 80%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: auto;
+}
+
+th, td{
+  padding: 15px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+::-webkit-scrollbar{
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+
+::-webkit-scrollbar-thumb {
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+
+thead{
+  background-color: rgb(172, 205, 216);
+  position: sticky;
+  top: 0;
+}
+
+#spinner{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  border: 10px solid black;
+  border: 6px solid #f3f3f3; /* Light grey */
+  border-top: 6px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+  display: none;
+  z-index: 20000000;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#black{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  position: fixed;
+  top: 0;
 }

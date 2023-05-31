@@ -1,3 +1,8 @@
+const names = {
+    "maleNames": ["Vasya", "Josef", "Abraham", "Yakob", "Asaf", "Mosez", "David"],
+    "femaleNames": ["Asya", "Sara", "Rivka", "Olya", "Klara", "Galya"]
+};
+
 export function getRandomInt(min, max) {
     if (min == max) {
         max++;
@@ -11,21 +16,14 @@ export function getRandomElement(array) {
     return array[getRandomInt(0, array.length)]
 }
 
-export function getRandomEmployee() {
-    const persons = [{ name: 'Vasia', gender: 'male' },
-    { name: 'Oleg', gender: 'male' },
-    { name: 'Dima', gender: 'male' },
-    { name: 'Alex', gender: 'male' },
-    { name: 'Andrew', gender: 'male' },
-    { name: 'Tanya', gender: 'female' },
-    { name: 'Irina', gender: 'female' },
-    { name: 'Olga', gender: 'female' },
-    { name: 'Alina', gender: 'female' }];
-    const departments = ['QA', 'Development', 'Audit', 'Accounting', 'Management']
-    const person = getRandomElement(persons);
+export function getRandomEmployee(minSalary, maxSalary, minYear, maxYear, departments) {
+    const gender = getRandomElement(['male', 'female']);
+    const name = getRandomElement(gender == 'female' ? names.femaleNames : names.maleNames);
+    const birthYear = getRandomInt(minYear, maxYear + 1);
+    const salary = getRandomInt(minSalary, maxSalary) * 1000;
+    const department = getRandomElement(departments);
+
     return {
-        id: getRandomInt(100000, 1000000), name: person.name,
-        birthYear: getRandomInt(1970, 2000), gender: person.gender, salary: getRandomInt(6000, 15000),
-        department: getRandomElement(departments)
+        name, birthYear, gender, salary, department
     };
 }
